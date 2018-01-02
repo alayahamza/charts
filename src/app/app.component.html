@@ -7,12 +7,13 @@
   <div class="col-md-12">
     <div class="col-md-4 text-center">
       <h3>Chart.js</h3>
-      <div *ngIf="chart">
-        <canvas id="canvas">{{ chart }}</canvas>
+      <div *ngIf="chartJs">
+        <canvas id="canvas">{{ chartJs }}</canvas>
       </div>
     </div>
     <div class="col-md-4 text-center">
       <h3>Highcharts.js</h3>
+      <app-highcharts></app-highcharts>
     </div>
     <div class="col-md-4 text-center">
       <h3>d3.js</h3>

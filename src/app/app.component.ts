@@ -9,7 +9,7 @@ import { Chart } from 'chart.js';
 })
 export class AppComponent {
 
-  chart = [];
+  chartJs = [];
 
   constructor(private _weather: WeatherService) { }
 
@@ -26,7 +26,7 @@ export class AppComponent {
           weatherDates.push(jsdate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric' }))
         })
 
-        this.chart = new Chart('canvas', {
+        this.chartJs = new Chart('canvas', {
           type: 'line',
           data: {
             labels: weatherDates,
@@ -52,7 +52,12 @@ export class AppComponent {
                 display: true
               }],
               yAxes: [{
-                display: true
+                display: true,
+                scaleLabel: {
+                  display: true,
+                  labelString: 'F',
+                  fontColor: "#546372"
+                }
               }],
             }
           }
