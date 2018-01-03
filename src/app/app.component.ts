@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { WeatherService } from './weather.service';
 import { Chart } from 'chart.js';
+import APP_CONFIG from './app.config';
+import { Node, Link } from './d3';
+
+
 
 @Component({
   selector: 'app-root',
@@ -8,10 +12,34 @@ import { Chart } from 'chart.js';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  nodes: Node[] = [];
+  links: Link[] = [];
 
   chartJs = [];
 
-  constructor(private _weather: WeatherService) { }
+  
+
+  constructor(private _weather: WeatherService) {
+    const N = APP_CONFIG.N,
+      getIndex = number => number - 1;
+
+    /** constructing the nodes array */
+    for (let i = 1; i <= N; i++) {
+      this.nodes.push(new Node(i));
+    }
+    for (let i = 1; i <= N; i++) {
+      for (let m = 2; i * m <= N; m++) {
+        /** increasing connections toll on connecting nodes */
+        this.nodes[getIndex(i)].linkCount++;
+        this.nodes[getIndex(i * m)].linkCount++;
+
+        /** connecting the nodes before starting the simulation */
+        this.links.push(new Link(i, i * m));
+      }
+    }
+
+
+  }
 
   ngOnInit() {
     this._weather.dailyForecast()

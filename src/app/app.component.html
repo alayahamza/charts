@@ -1,22 +1,22 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<div class="row">
 
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="col-md-4 text-center">
-      <h3>Chart.js</h3>
-      <div *ngIf="chartJs">
-        <canvas id="canvas">{{ chartJs }}</canvas>
-      </div>
-    </div>
-    <div class="col-md-4 text-center">
-      <h3>Highcharts.js</h3>
-      <app-highcharts></app-highcharts>
-    </div>
-    <div class="col-md-4 text-center">
-      <h3>d3.js</h3>
-    </div>
+
+<div class="col-md-12 text-center">
+  <h3>Chart.js</h3>
+  <div *ngIf="chartJs">
+    <canvas id="canvas">{{ chartJs }}</canvas>
   </div>
 </div>
+<div class="col-md-1"></div>
+<div id="d3-container" class="col-md-10 text-center">
+  <h3>d3.js</h3>
+  <graph [nodes]="nodes" [links]="links"></graph>
+</div>
+<div class="col-md-1"></div>
+<div class="col-md-1"></div>
+<div class="col-md-10 text-center">
+  <h3>Highcharts.js</h3>
+  <app-highchart></app-highchart>
+</div>
+<div class="col-md-1"></div>
